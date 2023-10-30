@@ -24,7 +24,7 @@ fobj.close()
 print(fobj.closed)
 
 fobj = open(SRCFILE,mode='r')
-cnts = fobj.read()
+cnts = ''
 cnts_copy = ''
 for line in fobj:
     cnts_copy += line
@@ -40,9 +40,11 @@ def print_lines(pth):
 # The enumerate function is used in a for loop to iterate over a sequence (such as a list, tuple, or file object)
 # while keeping track of the index (or position) of the current item in the sequence.
 # It is commonly used in scenarios where you want to process both the index and the item in the sequence simultaneously.
-            print(f"line {i}: {line}")
+            print(f"line {i}: {line.rstrip()}")
 # This will create the file located at `DSTFILE` and write some content to it
-    with open(DSTFILE, mode='w') as fobj:
-        fobj.write('This is a line')
-        fobj.write('This is another line')
-    print_lines(DSTFILE)
+with open(DSTFILE, mode='w') as fobj:
+    fobj.write('This is a line\n')
+    fobj.write('This is another line')
+print_lines(DSTFILE)
+
+
