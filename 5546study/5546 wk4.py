@@ -220,3 +220,155 @@ def factorial(n):
         return n * factorial(n-1) # Recursion - the function calls itself
 number = int(input('Enter a number: ')) # Must convert the input to an integer
 print('The factorial of', number, 'is', factorial(number))
+
+'''
+Consider the following tree representation of how files and folders are stored in your computer:
+
+folder1/
+  |___ file1.txt
+  |___ file2.txt
+  |___ sub_folder/
+  |    |___ file3.txt
+The diagram above indicates that the folder folder1 contains two files called file1.txt and file2.txt, and a sub-folder called sub_folder. Note that folders are identified by a trailing backlash '/'.
+
+Suppose you have a PyCharm project called toolbox. The structure of this project is:
+
+toolbox/
+|
+|___ config.py
+|
+|___ utils/
+|    |___ __init__.py
+|    |___ api.py
+|    |___ downloader.py
+
+
+The config.py file contains the following statement
+
+APIKEY = 'abcdcf'
+True or False: You can include the following statement inside the api.py module to get access to the value ofAPIKEY:
+
+from config import APIKEY : True
+'''
+
+'''
+Consider the following toolkit PyCharm project folder:
+
+toolkit/
+|
+|___ config.py                <-- Includes APIKEY = 'abc'
+|
+|___ utils/
+|    |___ __init__.py
+|    |___ config.py           <-- Includes APIKEY = '123'
+|    |___ api.py
+
+The toolkit/config.py file includes the statement:
+
+APIKEY = 'abc'
+Whereas the toolkit/utils/config.py file includes the statement
+
+APIKEY = '123'
+Which of the statements below (if added to the api.py module) will print "123"? Choose all that apply.
+
+Answer:
+
+way1:
+from utils.config import APIKEY
+print (APIKEY)
+
+way2:
+from config import APIKEY
+print (APIKEY)
+'''
+
+'''
+Suppose the toolkit project folder includes the following files:
+
+toolbox/
+|
+|___ config.py                <-- Includes APIKEY = 'abc'
+|
+|___ utils/
+|    |___ __init__.py
+|    |___ api.py
+|    |___ downloader.py         
+
+The toolkit/config.py file includes the statement:
+
+APIKEY = 'abc'
+This is the only module defining a variable named "APIKEY". 
+
+Which of the following statements (if added to toolkit/utils/api.py) will not raise an exception?  Choose all the apply.
+
+Answer:
+
+way1:
+from config import APIKEY
+print (APIKEY)
+
+way2:
+import config
+print (config.APIKEY)
+'''
+
+# Python permits you to have two different variables with the same name in different namespaces.
+
+def my_function(x):
+    x = x + 1
+    return x
+x = 3
+my_function(x)
+# When executing this code, what is the last value the variable x will take in the global namespace?
+# answer: 3
+
+def my_function(x):
+    x = x + 1
+    return x
+x = 3
+x = my_function(x)
+# What is the final value of x at the point marked >> above?
+# answer: 4
+
+def my_function(y):
+    y = y + x
+    x = 2
+    y = y + x
+    return y
+x = 3
+y = 10
+y = my_function(x)
+# This is a common source of confusion.
+# A function can use variables defined outside its scope (i.e., in the global namespace)
+# but it cannot modify their values (unless you use a special statement called global,  which you should not use).
+# The statement x = 2 inside the function would clash with the statement x = 3 outside the function.
+# To prevent that, Python will set the variable x to be local to the function.
+# This means that, inside the function, x is only defined after the statement y  = y + x.
+# Since this cannot happen, the code will not compile.
+
+# Functions defined in other modules can be used as long as they are properly imported.
+
+def get_and_print_five():
+    five = get_five()
+    print(f'Called get_five(): result is {five}')
+get_and_print_five()
+def get_five():
+    return 5
+# get_and_print_five () is called before Python has found the definition for get_five
+# (that is, before get_five is added to the proper namespace).
+
+'''
+False: If function_a calls function_b then Python can always execute function_b provided the original call to function_a occurs after function_b.
+Because(e.g.):
+# Here is a counter example:
+def function_b():
+    return function_c()
+def function_a():
+    return function_b()
+# We will call function_a after function b is defined
+function_a()
+# Then, we will define function_c
+def function_c():
+    return 1
+(error: function_c() is not defined)
+'''

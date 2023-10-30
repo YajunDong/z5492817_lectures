@@ -1,3 +1,11 @@
+# the white space standard in Python is 4 spaces
+
+# evaluate to True if the string 'a' is in the set s or if 'b' is not in the set s
+s = {'z'}
+print(not ('a' not in s and 'b' in s))
+print('a' in s or 'b' not in s)
+print('a' in s or not 'b' in s)
+
 # loop
 l = ["Fairfield",
     "Fairfield East",
