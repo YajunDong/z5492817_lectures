@@ -559,3 +559,53 @@ scores = {
 }
 for key, value in scores.items():
 	print(key, value)
+
+
+print("""'Jhon said:"let's learn"'""")
+print(6/2)
+print(1==1)  # 1 = 1 is error
+
+length = 56
+width = 33
+height = 30.5
+volume = length*width*height
+print(f"the volume is equal to {volume} cm^3")
+
+string = 'From firstname.surname@unse.edu.au Tue Oct 06 10:10:15 2020'
+step1 = string.split()
+print(step1)
+step2 = string.split()[1]
+print(step2)
+step3 = string.split()[1].split("@")
+print(step3)
+step4 = string.split()[1].split("@")[1]
+print(step4)
+
+#hours = input('Enter number of hours you worked this week:')
+hours = 5
+hours = int(hours)
+normal_rate = 51.45
+overload_rate = 88.9
+if hours > 35:
+    pay = (35*normal_rate) + ((hours-35)*overload_rate)
+else:
+    pay = hours *normal_rate
+print(f'This weekly payment is: {pay}')
+
+# loop
+c = ['a','b','c']
+for i in c:
+    print(i)
+
+d = {
+    "beauty": True,
+    "truth": True,
+    "red wheelbarrow": 100000,
+    5: "fingers",
+    }
+for key in d:
+    print(key)
+for val in d.values():
+    print(val)
+for key, value in d.items():
+    print(f'the key is {key}, and the value is {value}')
