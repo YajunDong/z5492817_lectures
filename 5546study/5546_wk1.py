@@ -1,4 +1,5 @@
-# Python is a general purpose programming language
+'''
+Python is a general purpose programming language
 # "py" files containing Python code are called modules.
 # A package is a Python module containing other modules.
 # A folder containing an _init__.py file is a package.
@@ -34,12 +35,8 @@
 # And if there are two operations with same precedence in an expression
 # the associativity rule will be followed, which means all operators will follow left to right associativity.
 
-import yfinance
-tic = "Qan.AX"
-start = '2020-01-01'
-end = None
-df = yfinance.download(tic,start,end)
-df.to_csv('qan_stk_prc.csv')
+# A "Directory" is a basic file storage folder in Pycharm
+# but the "Python Package" is a specialized folder marked with  _ _ init_ _.py.
 
 # function & methods
 # 1. Functions are independent entities on a Python code, while methods are class dependent.
@@ -47,11 +44,26 @@ df.to_csv('qan_stk_prc.csv')
 # 3. Functions can be called by their names, while methods should be called using the name of their classes.
 # 4. Functions process the data which are passed to them as arguments
 # while methods operate the data enclosed in the object of the class to which they are associated.
+'''
+
+import yfinance
+tic = "Qan.AX"
+start = '2020-01-01'
+end = None
+df = yfinance.download(tic,start,end)
+df.to_csv('qan_stk_prc.csv')
 
 # convert all the strings in a set to integers
 string_set = {"1", "2", "3", "4"}
 int_set = {int(s) for s in string_set}
 print(int_set)
 
-# A "Directory" is a basic file storage folder in Pycharm
-# but the "Python Package" is a specialized folder marked with  _ _ init_ _.py.
+# 1. variable name can only start with letter and _
+# 2. str and int
+print(str(1))
+a = int(1) + int(2)
+print(a)
+print(5^2)
+print(5**2)
+# bool must with True or False, not true or false
+
